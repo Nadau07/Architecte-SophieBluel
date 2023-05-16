@@ -174,24 +174,63 @@ margin: auto;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
-input[type="submit"]{
-	font-family: 'Syne';
-	font-weight: 700;
-	color: white;
-	background-color: #1D6154;
-	margin : 2em auto ;
-	width: 180px;
-	text-align: center;
-	border-radius: 60px ;
-}
-
-.MDP-oubli{
-	color:black;
-}
-
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
 	margin: 2em
 }
 
+/***CSS PAGE LOGIN***/
+
+#login {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+#login h2{
+	margin-bottom:37px;
+	margin-top: 150px;
+	text-align: center;
+}
+
+#login label{
+	padding-bottom: 7px;
+}
+.form-input{
+	margin-bottom: 37px;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	width: 379px;
+	height:51px;
+	border-color: transparent;
+}
+
+.Form-mail , .Form-password, .Form-btn{
+	display:flex;
+	flex-direction: column;
+}
+
+input[type="submit"]{
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	margin : 2em auto ;
+	border-radius: 60px ;
+	padding: 10px 38px 9px 39px;
+	border-color: transparent;
+
+}
+.MDP-oubli{
+	color:black;
+	text-align: center;
+}
+.footer-login{
+position: fixed;
+left:0;
+bottom:0;
+width: 100%;
+}
+
+.footer-login li{
+	padding-right: 107px;
+}

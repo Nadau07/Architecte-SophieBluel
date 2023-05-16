@@ -18,4 +18,6 @@ async function Categories(){
     const data2 = await response2.json()
     console.log(data2)
     return data2
+
+    document.querySelector('#filter').src =data2.url
 }
