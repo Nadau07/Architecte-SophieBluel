@@ -6,7 +6,6 @@ async function getWorks(){
 
     const response = await fetch ('http://localhost:5678/api/works')
     const data = await response.json()
-    console.log(data)
     return data
 
 
@@ -18,6 +17,4 @@ async function Categories(){
     const data2 = await response2.json()
     return data2
 
-    document.querySelector('#filter').src =data2.url
 }
-

@@ -1,4 +1,12 @@
 
+//Creartion partie Filtre :
+
+
+
+
+
+
+
 //Afficher les images : 
 async function displayWorks(){
 const gallery = document.querySelector(".gallery");
@@ -13,8 +21,8 @@ works.forEach(works => {
     workId.innerText = works.title;
 
     gallery.appendChild(figureElement);
-    figureElement.appendChild(workId);
     figureElement.appendChild(workImg);
+    figureElement.appendChild(workId);
 });
 }
 
