@@ -234,3 +234,21 @@ width: 100%;
 .footer-login li{
 	padding-right: 107px;
 }
+
+.filter{
+	display:flex;
+	justify-content: center;
+	gap:10px;
+}
+
+.filter p {
+	border: 1px solid #1D6154;
+	padding: 9px 22px 9px 20px;
+	margin-bottom: 51px;
+	margin-top : 21px;
+	border-radius : 60px;
+	font-family:'Syne' ;
+	color: #1D6154;
+	font-weight: 700;
+	font-size:16px;
+}
