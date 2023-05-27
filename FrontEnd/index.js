@@ -1,71 +1,5 @@
-//AFFICHER la partie filtre:
-/*async function displayCategories() {
-  const filter = document.querySelector(".filter");
-  const categories = await Categories();
-  categories.unshift({ name: "Tous" }); //Ajout "Tous" dans le tableau
 
-  //Boucle pour creer les noms de categories
-  categories.forEach((category) => {
-    const Element = document.createElement("p");
-    Element.innerText = category.name;
-    Element.addEventListener("click", () => {
-      displayWorks(category.name); //Ajout click sur les categories
-    });
-    filter.appendChild(Element); //Ajout chaque categories dans filter
-  });
-}
-displayCategories(); //execute l'affichage des categories
-
-const categoryName = "Tous";
-
-//Afficher les images en fonction des categories :
-/*
-async function displayWorks(categoryName) {
-  const gallery = document.querySelector(".gallery");
-  const works = await getWorks();
-
-  //Tableaux des elements par categories (avec les id):
-
-  const idObjets = [1, 5];
-  const filterObjets = works.filter((work) => idObjets.includes(work.id));
-  console.log(filterObjets);
-
-  const idAppart = [2, 4, 6, 7, 8, 9];
-  const filterAppart = works.filter((work) => idAppart.includes(work.id));
-  console.log(filterAppart);
-
-  const idHotelBar = [3, 10, 11];
-  const filterHotelBar = works.filter((work) => idHotelBar.includes(work.id));
-  console.log(filterHotelBar);
-
-  let filterWorks = works;
-
-  if (categoryName === "Tous") {
-    filterWorks = works;
-  } else if (categoryName === "Objets") {
-    filterWorks = works.filter((work) => idObjets.includes(work.id));
-  } else if (categoryName === "Appartements") {
-    filterWorks = works.filter((work) => idAppart.includes(work.id));
-  } else if (categoryName === "Hotels & restaurants") {
-    filterWorks = works.filter((work) => idHotelBar.includes(work.id));
-  }
-  gallery.innerHTML = "";
-
-  filterWorks.forEach((works) => {
-    const figureElement = document.createElement("figure");
-    const workImg = document.createElement("img");
-    workImg.src = works.imageUrl;
-    const workId = document.createElement("figcaption");
-    workId.innerText = works.title;
-
-    gallery.appendChild(figureElement);
-    figureElement.appendChild(workImg);
-    figureElement.appendChild(workId);
-  });
-}
-
-displayWorks(); // execute l'affichage des images par categories*/
- async function displayWorks(works){
+async function displayWorks(works){
   const gallery = document.querySelector(".gallery");
   gallery.innerHTML="";
   works.forEach((work) => {
@@ -84,7 +18,7 @@ displayWorks(); // execute l'affichage des images par categories*/
 async function displayCategories(categories){
   const filter = document.querySelector(".filter");
   console.log(categories);
-  categories.unshift({ name: "Tous" });
+  categories.unshift({ name: "Tous" , id : "0" });
 
 
   //Boucle pour creer les noms de categories
@@ -93,17 +27,25 @@ async function displayCategories(categories){
     Element.innerText = category.name;
     Element.setAttribute("data-id", category.id)
     Element.addEventListener("click", async (event) => {
+      
+      const allElements = document.querySelectorAll(".filter p");
+      allElements.forEach((color) => {
+        color.classList.remove("filterActive");
+      });
+      Element.classList.add("filterActive");
+   
       const works = await getWorks();
       console.log(works);
       console.log(event.target.getAttribute("data-id"));
-      const filterWorks = works.filter( work => work.categoryId == event.target.getAttribute("data-id"));
+      const filterWorks = event.target.getAttribute("data-id") === "0" ? works : works.filter(work => work.categoryId == event.target.getAttribute("data-id"));
       console.log(filterWorks);
       displayWorks(filterWorks); //Ajout click sur les categories
     });
     filter.appendChild(Element); //Ajout chaque categories dans filter
   });
-
 }
+
+
 
 
 

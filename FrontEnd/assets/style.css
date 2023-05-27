@@ -239,6 +239,7 @@ width: 100%;
 	display:flex;
 	justify-content: center;
 	gap:10px;
+	cursor: pointer;
 }
 
 .filter p {
@@ -255,5 +256,5 @@ width: 100%;
 
 .filterActive{
 	background-color: #1D6154;
-	color:white;
+	color:white !important;
 }
