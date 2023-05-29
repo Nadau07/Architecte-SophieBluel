@@ -36,9 +36,10 @@
 			<div class="Form-password">
             <label for="password">Mot de passe</label>
             <input class="form-input" type="password" name="password" id="password" required >
-			</div>
+			<p id="erreur-message"></p>
+		</div>
 			<div class="Form-btn">
-			<input type="submit" value="Se connecter">
+			<input type="submit" value="Se connecter" id="connexion">
             <a class="MDP-oubli" href="#">Mot de passe oublié</a>
 			</div>	
         </from>
@@ -56,6 +57,7 @@
 		</ul>
 	</nav>
 </footer>
+<script src="api.js"></script>
 <script src="login.js"></script>
 </body>
 </html>

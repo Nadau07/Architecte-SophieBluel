@@ -16,6 +16,8 @@ async function getCategories(){
     return data2
 }
 
+
+
 /* Autre possibilité de recuperer via l'API
     fetch('http://localhost:5678/api/categories')
     .then(res => res.json())
