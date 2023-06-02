@@ -257,5 +257,35 @@ width: 100%;
 
 .filterActive{
 	background-color: #1D6154;
-	color:white !important;
+	color:white !important
+}
+
+/***BARRE D'EDITION***/
+
+.barreEdition{
+	display:flex;
+	background-color: black;
+	justify-content:center;
+
+}
+
+.barreEdition p {
+	color:white;
+	padding: 20px;
+	margin: 10px;
+}
+.barreEdition i {
+	padding-right : 10px;
+}
+
+.barreEdition-btn{
+	border-radius: 25px;
+	padding: 11px 23px;
+	background: white;
+	font-family: 'Work Sans';
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 16px;
+	margin:11px;
+
 }

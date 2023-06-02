@@ -7,11 +7,10 @@ password: S0phie
 Message erreur a afficher " Erreur dans l’identifiant ou le mot de passe "
 */
 
-const form = document.getElementById("loginForm");
-//console.log(form)     
+const formulaire = document.getElementById("form-login");
+console.log(formulaire);     
 const ErreurMessage = document.getElementById("erreur-message");
 //console.log(ErreurMessage);
-
 async function Login(email, password) {
   const User = {
     email: email,
@@ -33,8 +32,12 @@ async function Login(email, password) {
     const token = resultat.token;
     localStorage.setItem("token", token);
     //console.log(resultat);
+  
+
     if (response.status === 200){
-      window.location.href ="./index.html"; //redirection vers page d'accueil
+      window.location.href ="./index.html";//redirection vers page d'accueil
+      const loginOk = document.getElementById("loginStatus");
+      loginOk.innerText = "Logout";
       
       } else {
       
@@ -49,7 +52,7 @@ async function Login(email, password) {
 };
 
 
-form.addEventListener("submit", (event) => {
+formulaire.addEventListener("submit", (event) => {
   event.preventDefault(); //empeche le comportement par defaut de submit
 
   let BaliseEmail = document.getElementById("email");
@@ -61,4 +64,3 @@ form.addEventListener("submit", (event) => {
 
 Login(email,password);
 });
-
