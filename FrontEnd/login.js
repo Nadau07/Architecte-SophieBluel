@@ -35,10 +35,7 @@ async function Login(email, password) {
   
 
     if (response.status === 200){
-      window.location.href ="./index.html";//redirection vers page d'accueil
-      const loginOk = document.getElementById("loginStatus");
-      loginOk.innerText = "Logout";
-      
+      window.location.href ="./index.html";//redirection vers page d'accueil 
       } else {
       
       ErreurMessage.textContent = "Erreur dans l’identifiant ou le mot de passe"
