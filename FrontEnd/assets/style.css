@@ -99,7 +99,11 @@ nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
 }
-
+.nav-projets {
+	text-decoration: none;
+	color:black;
+	cursor:pointer;
+}
 li:hover {
 	color: #B1663C;
 }
@@ -178,6 +182,8 @@ footer nav ul {
 	justify-content: flex-end;
 	margin: 2em
 }
+
+
 
 /***CSS PAGE LOGIN***/
 
@@ -262,34 +268,31 @@ width: 100%;
 /***BARRE D'EDITION***/
 
 .barreEdition{
-	display:flex;
-	background-color: black;
-	justify-content:center;
 	display: none;
-
+	background-color: black;
 }
 
-.barreEdition p {
-	color:white;
-	padding: 20px;
-	margin: 10px;
-}
 .barreEdition i {
-	padding-right : 10px;
+	color:white;
+}
+.editionP{
+	color: white;
 }
 
-.barreEdition-btn{
-	border-radius: 25px;
-	padding: 11px 23px;
-	background: white;
+/***Bouton modifier au niveau de la photo ****/
+
+.btn-modifier{
+	border:none;
+	background: transparent;
 	font-family: 'Work Sans';
-	font-weight: 500;
+	font-style: normal;
+	font-weight: 400;
 	font-size: 14px;
 	line-height: 16px;
-	margin:11px;
-
+	margin-left:57px;
+	display:none;
+	
 }
-
 
 /***CLASS ACTIVE POUR JS ****/
 
@@ -321,33 +324,35 @@ width: 100%;
 	font-weight: 400;
 	font-size: 14px;
 	line-height: 16px;
+	display:none;
 }
 
 
 .modal-container{
 	position:fixed;
 	top:0;
+	left:0;
 	width: 100%;
 	height :100%;
 	background: rgba(0, 0, 0, 0.3);
-	display:none;
+	overflow: auto;
+	display: none;
+	
 }
 
 
-.modal{
-	width: 95%;
-	max-width : 500px;
-	min-width: 300px;
+.modal-body{
+	width: 50%;
+	margin : 10% auto 10% auto;
 	padding:30px;
 	background: white;
 	border-radius: 5px;
 	position:relative;
-	top:40%;
-	left:50%;
-	transform: translate(-50%, -50%);
+	
+	
 }
 
-.modal i{
+.modal-close{
 	border:none;
 	font-size:20px;
 	position:absolute;
@@ -356,7 +361,7 @@ width: 100%;
 	cursor:pointer;
 }
 
-.modal h2{
+.modal-title{
 	display: flex;
 	justify-content: center;
 	font-family: 'Work Sans';
@@ -367,7 +372,7 @@ width: 100%;
 	color:black;
 }
 
-.modal button{
+.modal-ajout{
 	display: flex;
 	font-size:14px;
 	line-height:17px;
@@ -382,7 +387,7 @@ width: 100%;
 	cursor: pointer;
 }
 
-.modal-p {
+.modal-supp {
 	display: flex;
 	justify-content: center;
 	color: #D65353;

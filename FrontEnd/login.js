@@ -45,7 +45,6 @@ async function Login(email, password) {
       "Erreur dans l’identifiant ou le mot de passe " + error.message
     );
     }
-
 };
 
 
