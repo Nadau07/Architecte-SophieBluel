@@ -340,9 +340,13 @@ width: 100%;
 	
 }
 
+hr {
+	margin: 65px 105px 48px 105px;
 
+}
 .modal-body{
-	width: 50%;
+	width: 630px;
+	height:731px;
 	margin : 10% auto 10% auto;
 	padding:30px;
 	background: white;
@@ -362,6 +366,7 @@ width: 100%;
 }
 
 .modal-title{
+	margin-top:60px;
 	display: flex;
 	justify-content: center;
 	font-family: 'Work Sans';
@@ -397,3 +402,17 @@ width: 100%;
 	font-family: 'Syne';
 }
 
+/***Images dans la modale****/
+
+.gallery2{
+	display:flex;
+	gap:6px;
+	flex-wrap: wrap;
+	margin:45px 105px ;
+}
+
+.gallery2 img{
+	width: 78px;
+	height:104px;
+
+}
