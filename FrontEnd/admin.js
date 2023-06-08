@@ -6,6 +6,21 @@ const suppImg = document.querySelector(".modal-supp");
 const btnModal = document.querySelector(".modal-btn");
 const modal2 = document.querySelector(".modal2-container");
 const precedent = document.querySelector("#precedent");
+const imageUpload = document.querySelector("input");
+const imgPrevisuel = document.querySelector("#icone_previsuel");
+
+console.log(imageUpload);
+console.log(icone_previsuel);
+
+//UPLOAD UNE NOUVELLE IMAGE//
+
+/*function updateImgDisplay(){
+  while(imgPrevisuel.firstChild){
+    imgPrevisuel.removeChild(imgPrevisuel)
+  }; //vide le contenu (icone)
+};*/
+
+
 
 
  ///////// AFFICHAGE DES MODALES /////////
@@ -13,10 +28,10 @@ const precedent = document.querySelector("#precedent");
 //AFFICHER-MASQUER LA MODALE 1 //
 function afficherModal() {
   modal.style.display = "block";
-}
+};
 function masquerModal() {
   modal.style.display = "none";
-}
+};
 btnModal.addEventListener("click", afficherModal);
 closeModal.addEventListener("click", masquerModal);
 
@@ -35,7 +50,7 @@ async function displayModalImg(works) {
     figureElement.appendChild(workImg);
     figureElement.appendChild(workP);
   });
-}
+};
 
 
 
@@ -60,12 +75,11 @@ async function displayListeDeroulante(categories){
   categories.forEach((category)=>{
     const options = document.createElement("option");
     options.innerText = category.name;
-    console.log(options)
+    //console.log(options)
     listeDeroulante.appendChild(options);
   
-  })
-
-}
+  });
+};
 
 //MODE ADMINISTRATEUR : LogIn OK//
 function updateLogin() {
@@ -92,8 +106,8 @@ function updateLogin() {
       console.log("déconnecter");
       window.location.href = "./index.html";
     });
-  }
-}
+  };
+};
 
 
 
@@ -109,6 +123,7 @@ async function init() {
   displayModalImg(works);
   displayListeDeroulante(categories);
   updateLogin();
-}
+  //updateImgDisplay()
+};
 
 init();
