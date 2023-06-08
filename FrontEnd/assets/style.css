@@ -427,7 +427,7 @@ hr {
 	height :100%;
 	background: rgba(0, 0, 0, 0.3);
 	overflow: auto;
-	display:none;
+	
 	
 	
 }
@@ -520,11 +520,39 @@ hr {
 	font-family: 'Syne';
 	font-weight: 700;
 	color: white;
-	background-color: #1D6154;
+	background-color: #A7A7A7;
 	margin : 2em auto ;
 	border-radius: 60px ;
-	padding: 10px 38px 9px 39px;
+	padding: 10px 49px 9px 49px;
 	border-color: transparent;
 	cursor: pointer;
+	margin-top:79px;
+}
+
+.modal2-titreEtCategorie{
+	display: flex;
+	flex-direction: column;
+	
+}
+
+.titre , .categories {
+	font-size: 14px;
+	line-height: 16px;
+	font-weight: 500;
+	font-family: 'Work Sans';
+	padding-bottom:10px;
+}
+
+.titreModal2{
+	padding: 18px 225px 17px 16px;
+	border: transparent;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	margin-bottom:21px;
+}
+
+.categoriesModal2{
+	border:transparent;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	padding: 18px 225px 17px 16px;
 }
 

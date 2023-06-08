@@ -1,4 +1,4 @@
-//MODALE//
+//MODALE 1 //
 const modal = document.querySelector(".modal-container");
 const closeModal = document.querySelector(".modal-close");
 const ajoutImg = document.querySelector(".modal-ajout");
@@ -31,22 +31,17 @@ async function displayModal(works) {
     figureElement.appendChild(workP);
   });
 }
-async function init() {
-  const works = await getWorks();
-  displayModal(works);
-}
 
-init();
 
-//FAIRE APPARAITRE: LogOut, Barre d'edition et bouton modifier//
+//MODE ADMINISTRATEUR : LogIn OK//
 function updateLogin() {
   const logStatus = document.querySelector(".login-link");
   //console.log(logStatus)
   const token = localStorage.getItem("token");
   //console.log(tokken);
-  const boutonModifierModal = document.querySelector(".modal-btn");
-  const barreEdition = document.querySelector(".barreEdition");
-  const boutonModifier2 = document.querySelector(".btn-modifier");
+  const boutonModifierModal = document.querySelector(".modal-btn"); 
+  const barreEdition = document.querySelector(".barreEdition"); 
+  const boutonModifier2 = document.querySelector(".btn-modifier"); 
   const filter = document.querySelector(".filter");
 
   const loginOk = () => (token ? true : false);
@@ -67,3 +62,30 @@ function updateLogin() {
 }
 
 updateLogin();
+
+
+//MODALE 2//
+
+//Afficher les categories dans le menu déroulant //
+
+async function displayListeDeroulante(categories){
+  const listeDeroulante = document.querySelector(".categoriesModal2");
+    //console.log(listeDeroulante);
+  categories.forEach((category)=>{
+    const options = document.createElement("option");
+    options.innerText = category.name;
+    console.log(options)
+    listeDeroulante.appendChild(options);
+  
+  })
+
+}
+
+async function init() {
+  const works = await getWorks();
+  const categories = await getCategories();
+  displayModal(works);
+  displayListeDeroulante(categories);
+}
+
+init();
