@@ -1,4 +1,4 @@
-//MODALE 1 //
+
 const modal = document.querySelector(".modal-container");
 const closeModal = document.querySelector(".modal-close");
 const ajoutImg = document.querySelector(".modal-ajout");
@@ -8,8 +8,9 @@ const modal2 = document.querySelector(".modal2-container");
 const precedent = document.querySelector("#precedent");
 
 
+ ///////// AFFICHAGE DES MODALES /////////
 
-//AFFICHER-MASQUER LA MODALE//
+//AFFICHER-MASQUER LA MODALE 1 //
 function afficherModal() {
   modal.style.display = "block";
 }
@@ -19,7 +20,7 @@ function masquerModal() {
 btnModal.addEventListener("click", afficherModal);
 closeModal.addEventListener("click", masquerModal);
 
-//IMAGES dans modale//
+// MODALE 1 : afficher les projets //
 async function displayModalImg(works) {
   const gallery2 = document.querySelector(".gallery2");
   gallery2.innerHTML = "";
@@ -36,6 +37,35 @@ async function displayModalImg(works) {
   });
 }
 
+
+
+//AFFICHER LA MODALE 2 (bouton : Ajouter une photo)//
+ajoutImg.addEventListener("click", ()=>{
+  modal2.style.display="block";
+  modal.style.display="none";
+});
+//RETOUR A LA MODALE 1 (bouton : <- ) //
+precedent.addEventListener("click", ()=>{
+  afficherModal();
+  modal2.style.display="none";
+});
+
+
+
+// MODALE 2 : menu déroulant : (categories) //
+
+async function displayListeDeroulante(categories){
+  const listeDeroulante = document.querySelector(".categoriesModal2");
+    //console.log(listeDeroulante);
+  categories.forEach((category)=>{
+    const options = document.createElement("option");
+    options.innerText = category.name;
+    console.log(options)
+    listeDeroulante.appendChild(options);
+  
+  })
+
+}
 
 //MODE ADMINISTRATEUR : LogIn OK//
 function updateLogin() {
@@ -65,36 +95,11 @@ function updateLogin() {
   }
 }
 
-updateLogin();
 
 
-//MODALE 2//
 
-//Afficher les categories dans le menu déroulant //
 
-async function displayListeDeroulante(categories){
-  const listeDeroulante = document.querySelector(".categoriesModal2");
-    //console.log(listeDeroulante);
-  categories.forEach((category)=>{
-    const options = document.createElement("option");
-    options.innerText = category.name;
-    console.log(options)
-    listeDeroulante.appendChild(options);
-  
-  })
 
-}
-
-//Retour a la 1ere modale//
-precedent.addEventListener("click", ()=>{
-  afficherModal();
-  modal2.style.display="none";
-});
-// Passer a la seconde modale (Ajouter une photo)//
-ajoutImg.addEventListener("click", ()=>{
-  modal2.style.display="block";
-  modal.style.display="none";
-});
 
 
 
@@ -103,6 +108,7 @@ async function init() {
   const categories = await getCategories();
   displayModalImg(works);
   displayListeDeroulante(categories);
+  updateLogin();
 }
 
 init();
