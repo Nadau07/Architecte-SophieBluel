@@ -17,7 +17,7 @@ async function displayWorks(works){
 
 async function displayCategories(categories){
   const filter = document.querySelector(".filter");
-  console.log(categories);
+  //console.log(categories);
   categories.unshift({ name: "Tous" , id : "0" });
 
 

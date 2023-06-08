@@ -427,10 +427,9 @@ hr {
 	height :100%;
 	background: rgba(0, 0, 0, 0.3);
 	overflow: auto;
-	
-	
-	
+	display:none;
 }
+
 
 hr {
 	margin: 65px 105px 48px 105px;
@@ -449,6 +448,13 @@ hr {
 	position:relative;
 	
 	
+}
+.fa-arrow-left{
+	position:absolute;
+	left:30px;
+	top:20px;
+	font-size: 20px;
+	cursor: pointer;
 }
 
 .modal2-close{

@@ -4,6 +4,10 @@ const closeModal = document.querySelector(".modal-close");
 const ajoutImg = document.querySelector(".modal-ajout");
 const suppImg = document.querySelector(".modal-supp");
 const btnModal = document.querySelector(".modal-btn");
+const modal2 = document.querySelector(".modal2-container");
+const precedent = document.querySelector("#precedent");
+
+
 
 //AFFICHER-MASQUER LA MODALE//
 function afficherModal() {
@@ -16,7 +20,7 @@ btnModal.addEventListener("click", afficherModal);
 closeModal.addEventListener("click", masquerModal);
 
 //IMAGES dans modale//
-async function displayModal(works) {
+async function displayModalImg(works) {
   const gallery2 = document.querySelector(".gallery2");
   gallery2.innerHTML = "";
   works.forEach((work) => {
@@ -81,10 +85,23 @@ async function displayListeDeroulante(categories){
 
 }
 
+//Retour a la 1ere modale//
+precedent.addEventListener("click", ()=>{
+  afficherModal();
+  modal2.style.display="none";
+});
+// Passer a la seconde modale (Ajouter une photo)//
+ajoutImg.addEventListener("click", ()=>{
+  modal2.style.display="block";
+  modal.style.display="none";
+});
+
+
+
 async function init() {
   const works = await getWorks();
   const categories = await getCategories();
-  displayModal(works);
+  displayModalImg(works);
   displayListeDeroulante(categories);
 }
 
