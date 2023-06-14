@@ -612,3 +612,15 @@ hr {
 	padding: 18px 225px 17px 16px;
 }
 
+.error-title{
+	display:none;
+}
+
+/***
+<i class="fa-solid fa-arrows-up-down-left-right"></i>
+icone n°1 sur modale ***/
+
+/*** 
+<i class="fa-solid fa-trash-can"></i>
+icone n°2 corbeille sur modale
+***/
