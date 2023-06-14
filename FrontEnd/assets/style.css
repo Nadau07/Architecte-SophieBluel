@@ -270,18 +270,51 @@ width: 100%;
 .barreEdition{
 	display: none;
 	background-color: black;
+	justify-content: center;
 }
 
 .barreEdition i {
 	color:white;
+	margin-right:13px;
+	font-size:16px;
+}
+
+.barreEdition-btn{
+	border:none;
+	color:black;
+	background: white;
+	margin-left:21px;
+	padding: 11px 23px;
+	border-radius : 60px;
+	font-size:14px;
+	font-family: 'Work Sans';
+	line-height: 16px;
+	margin-top: 10px;
+	margin-bottom:11px;
 }
 .editionP{
 	color: white;
+	margin-top:20px;
+}
+
+
+/***Bouton modifier au niveau de l'article***/
+
+.btn-modifier2{
+	border:transparent;
+	background: white;
+	font-family: 'Work Sans';
+	font-size:14px;
+}
+.btn-modifier2 i {
+	margin-right:13px;
+	font-size:16px;
 }
 
 /***Bouton modifier au niveau de la photo ****/
 
 .btn-modifier{
+	margin-top:15px;
 	border:none;
 	background: transparent;
 	font-family: 'Work Sans';
@@ -293,6 +326,35 @@ width: 100%;
 	display:none;
 	
 }
+
+.btn-modifier i {
+	margin-right:13px;
+	font-size:16px;
+}
+
+/***Bouton modifier pour ouvrir la modale***/
+
+
+.modal-btn {
+	border:none;
+	background: transparent;
+	cursor:pointer;
+	font-family: 'Work Sans';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 16px;
+	display:none;
+	margin-bottom:100px;
+	margin-top:8px;
+}
+
+.modal-btn i {
+	margin-right:13px;
+	font-size:16px;
+}
+
+
 
 /***CLASS ACTIVE POUR JS ****/
 
@@ -313,18 +375,6 @@ width: 100%;
 	gap: 31px;
 	margin-bottom: 1em;
 	margin-top:140px;
-}
-
-.modal-btn {
-	border:none;
-	background: transparent;
-	cursor:pointer;
-	font-family: 'Work Sans';
-	font-style: normal;
-	font-weight: 400;
-	font-size: 14px;
-	line-height: 16px;
-	display:none;
 }
 
 

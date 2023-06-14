@@ -69,7 +69,7 @@ precedent.addEventListener("click", ()=>{
 
 // MODALE 2 : menu déroulant : (categories) //
 
-async function displayListeDeroulante(categories){
+ function displayListeDeroulante(categories){
   const listeDeroulante = document.querySelector(".categoriesModal2");
     //console.log(listeDeroulante);
   categories.forEach((category)=>{
@@ -97,14 +97,13 @@ function updateLogin() {
   if (loginOk()) {
     logStatus.innerHTML = "logout";
     boutonModifierModal.style.display = "block";
-    barreEdition.style.display = "block";
+    barreEdition.style.display = "flex";
     boutonModifier2.style.display = "block";
     filter.style.display = "none";
     //cliquer sur Logout pour se déconnecter
     logStatus.addEventListener("click", () => {
       localStorage.clear("token");
       console.log("déconnecter");
-      window.location.href = "./index.html";
     });
   };
 };
