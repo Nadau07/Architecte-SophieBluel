@@ -390,6 +390,35 @@ width: 100%;
 	
 }
 
+
+.iconeDelet {
+position:relative;
+}
+
+.iconeDelet i {
+	position:absolute;
+	bottom : 93px;
+	left:54px;
+	color:white;
+	background: black;
+	padding:4px;
+	border-radius: 2px;
+}
+
+.iconePosition{
+	position:relative
+}
+.iconePosition i{
+	position:absolute;
+	color:white;
+	background: black;
+	padding:4px;
+	bottom:93px;
+	border-radius: 2px;
+	left:30px;
+}
+
+
 hr {
 	margin: 65px 105px 48px 105px;
 
@@ -451,7 +480,10 @@ hr {
 	line-height:17px;
 	font-family: 'Syne';
 }
-
+.gallery img{
+	width: 78px;
+	height: 104px;;
+}
 /***Images dans la modale****/
 
 .gallery2{
@@ -615,12 +647,3 @@ hr {
 .error-title{
 	display:none;
 }
-
-/***
-<i class="fa-solid fa-arrows-up-down-left-right"></i>
-icone n°1 sur modale ***/
-
-/*** 
-<i class="fa-solid fa-trash-can"></i>
-icone n°2 corbeille sur modale
-***/

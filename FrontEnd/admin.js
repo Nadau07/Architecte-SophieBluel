@@ -45,10 +45,23 @@ async function displayModalImg(works) {
     workImg.src = work.imageUrl;
     const workP = document.createElement("p");
     workP.innerText = "éditer";
+    const iconeDelet = document.createElement("div");
+    iconeDelet.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
+    iconeDelet.classList.add("iconeDelet");
+    const firstFigure = document.querySelector(".gallery2 figure:first-child");
+    if (firstFigure && !firstFigure.querySelector(".iconePosition")) {
+      const iconePosition = document.createElement("div");
+      iconePosition.innerHTML = '<i class="fa-solid fa-arrows-up-down-left-right"></i>';
+      iconePosition.classList.add("iconePosition");
+      firstFigure.appendChild(iconePosition);
+    }
 
     gallery2.appendChild(figureElement);
     figureElement.appendChild(workImg);
     figureElement.appendChild(workP);
+    figureElement.appendChild(iconeDelet);
+
+    
   });
 };
 
