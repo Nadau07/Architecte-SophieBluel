@@ -93,13 +93,14 @@ function affichagePrevisuel(selectedFile){
   newImage.src = URL.createObjectURL(selectedFile);
   newImage.classList.add("modal2NewImg");
   imgPrevisuel.appendChild(newImage);
+  boutonValider.style.backgroundColor="#1D6154";
+  boutonValider.style.color="white";
 
 }
 
 
 boutonValider.addEventListener("click", ()=>{
   if (window.selectedFile){
-    
       const title = document.querySelector(".titreModal2").value;
       if (title === ""){
       const messageErreur = document.querySelector(".error-title");

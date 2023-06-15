@@ -261,8 +261,9 @@ width: 100%;
 }
 
 .filterActive{
-	background-color: #1D6154;
 	color:white;
+	background: #1D6154;
+	
 }
 
 /***BARRE D'EDITION***/
@@ -654,5 +655,3 @@ hr {
 	color:red;
 	line-height: 16px;
 }
-
-

@@ -3,7 +3,7 @@ async function displayWorks(works){
   const gallery = document.querySelector(".gallery");
   gallery.innerHTML="";
   works.forEach((work) => {
-    const figureElement = document.createElement("figure");
+    const figureElement = document.createElement("figure1");
     const workImg = document.createElement("img");
     workImg.src = work.imageUrl;
     const workId = document.createElement("figcaption");
@@ -44,6 +44,7 @@ async function displayCategories(categories){
     filter.appendChild(Element); //Ajout chaque categories dans filter
   });
 }
+
 
 
 
