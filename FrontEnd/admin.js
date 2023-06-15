@@ -62,7 +62,7 @@ async function displayModalImg(works) {
       gallery.innerHTML=""; //supp aussi la gallerie sur index.html//
     });
 
-    
+
     const firstFigure = document.querySelector(".gallery2 figure:first-child");
     if (firstFigure && !firstFigure.querySelector(".iconePosition")) {
       const iconePosition = document.createElement("div");
@@ -92,7 +92,6 @@ function affichagePrevisuel(selectedFile){
   const newImage = document.createElement("img");
   newImage.src = URL.createObjectURL(selectedFile);
   newImage.classList.add("modal2NewImg");
-  imgPrevisuel.innerHTML="";
   imgPrevisuel.appendChild(newImage);
 
 }
@@ -169,7 +168,8 @@ function updateLogin() {
   //console.log(tokken);
   const boutonModifierModal = document.querySelector(".modal-btn"); 
   const barreEdition = document.querySelector(".barreEdition"); 
-  const boutonModifier2 = document.querySelector(".btn-modifier"); 
+  const boutonModifier2 = document.querySelector(".btn-modifier");
+  const boutonModif = document.querySelector(".btn-modifier2") 
   const filter = document.querySelector(".filter");
 
   const loginOk = () => (token ? true : false);
@@ -177,6 +177,7 @@ function updateLogin() {
   if (loginOk()) {
     logStatus.innerHTML = "logout";
     boutonModifierModal.style.display = "block";
+    boutonModif.style.display="block";
     barreEdition.style.display = "flex";
     boutonModifier2.style.display = "block";
     filter.style.display = "none";

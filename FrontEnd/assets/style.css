@@ -307,6 +307,7 @@ width: 100%;
 	background: white;
 	font-family: 'Work Sans';
 	font-size:14px;
+	display:none;
 }
 .btn-modifier2 i {
 	margin-right:13px;
