@@ -6,21 +6,14 @@ const suppImg = document.querySelector(".modal-supp");
 const btnModal = document.querySelector(".modal-btn");
 const modal2 = document.querySelector(".modal2-container");
 const precedent = document.querySelector("#precedent");
-const imageUpload = document.querySelector("input");
+const imageUpload = document.querySelector("#image_uploads");
 const imgPrevisuel = document.querySelector("#icone_previsuel");
+const btnAjoutImgModal2 = document.querySelector(".btn-ajout-photo");
+const gallery = document.querySelector(".gallery");
+const figureElement = document.createElement("figure");
 
-console.log(imageUpload);
-console.log(icone_previsuel);
-
-//UPLOAD UNE NOUVELLE IMAGE//
-
-/*function updateImgDisplay(){
-  while(imgPrevisuel.firstChild){
-    imgPrevisuel.removeChild(imgPrevisuel)
-  }; //vide le contenu (icone)
-};*/
-
-
+//console.log(imageUpload);
+//console.log(icone_previsuel);
 
 
  ///////// AFFICHAGE DES MODALES /////////
@@ -48,6 +41,16 @@ async function displayModalImg(works) {
     const iconeDelet = document.createElement("div");
     iconeDelet.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
     iconeDelet.classList.add("iconeDelet");
+
+    //Supprimer un element en cliquant sur l'icone corbeille//
+    iconeDelet.addEventListener("click", () => {
+      figureElement.remove();
+    });
+    //// Supprimer toute la gallerie ( modale 1)////
+    suppImg.addEventListener("click", ()=>{
+      gallery2.innerHTML="";
+      gallery.innerHTML=""; //supp aussi la gallerie sur index.html//
+    });
     const firstFigure = document.querySelector(".gallery2 figure:first-child");
     if (firstFigure && !firstFigure.querySelector(".iconePosition")) {
       const iconePosition = document.createElement("div");
@@ -60,11 +63,12 @@ async function displayModalImg(works) {
     figureElement.appendChild(workImg);
     figureElement.appendChild(workP);
     figureElement.appendChild(iconeDelet);
-
-    
   });
 };
 
+    
+ 
+ 
 
 
 //AFFICHER LA MODALE 2 (bouton : Ajouter une photo)//
@@ -93,6 +97,8 @@ precedent.addEventListener("click", ()=>{
   
   });
 };
+
+
 
 //MODE ADMINISTRATEUR : LogIn OK//
 function updateLogin() {
