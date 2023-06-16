@@ -10,14 +10,9 @@ const imageUpload = document.querySelector("#image_uploads");
 const imgPrevisuel = document.querySelector("#icone_previsuel");
 const btnAjoutImgModal2 = document.querySelector(".btn-ajout-photo");
 const gallery = document.querySelector(".gallery");
-const figureGallery1 = document.querySelector("figure1");
 const boutonValider = document.querySelector(".modal2-valider");
 const titreModal2 = document.querySelector(".titreModal2");
 const closeModal2 = document.querySelector(".modal2-close");
-
-
-//console.log(imageUpload);
-//console.log(icone_previsuel);
 
 
  ///////// AFFICHAGE DES MODALES /////////
@@ -51,17 +46,41 @@ async function displayModalImg(works) {
     iconeDelet.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
     iconeDelet.classList.add("iconeDelet");
 
-    //Supprimer un element en cliquant sur l'icone corbeille//
-    iconeDelet.addEventListener("click", () => {
-      figureElement2.remove();
-      figureGallery1.remove();
-    });
+    /*Supprimer un element en cliquant sur l'icone corbeille//
+    
+    iconeDelet.addEventListener("click", async (event) => {
+      figureElement2.remove();  
+      const token = localStorage.getItem("token");
+      const figure = event.target.closest("figure");
+      
+      if (figure) {
+        const workId = figure.dataset.id;
+        console.log(figure);
+        console.log(workId);
+        console.log(token);
+    
+        fetch(`http://localhost:5678/api/works/${workId}`, {
+          method: 'DELETE',
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        })
+        .then(function(response) {
+          if (response.ok) {
+            return false;
+          } else {
+            console.error("Erreur lors de la suppression");
+          }
+        });
+      }
+    });*/
+
+
     //// Supprimer toute la gallerie ( modale 1)////
     suppImg.addEventListener("click", ()=>{
       gallery2.innerHTML="";
       gallery.innerHTML=""; //supp aussi la gallerie sur index.html//
     });
-
 
     const firstFigure = document.querySelector(".gallery2 figure:first-child");
     if (firstFigure && !firstFigure.querySelector(".iconePosition")) {
@@ -88,14 +107,13 @@ imageUpload.addEventListener("change", (event)=>{
 });
 
 function affichagePrevisuel(selectedFile){
- 
+
   const newImage = document.createElement("img");
   newImage.src = URL.createObjectURL(selectedFile);
   newImage.classList.add("modal2NewImg");
   imgPrevisuel.appendChild(newImage);
   boutonValider.style.backgroundColor="#1D6154";
   boutonValider.style.color="white";
-
 }
 
 
@@ -107,13 +125,12 @@ boutonValider.addEventListener("click", ()=>{
       messageErreur.style.display="block";
       return;
     }
-   
-    addElementWithPhoto(window.selectedFile, title);
+    addElementPhoto(window.selectedFile, title);
     }
   }
 );
 
-function addElementWithPhoto(photoFile, title){
+function addElementPhoto(photoFile, title){
   const newElement = document.createElement("div");
   const newImage = document.createElement("img");
   newImage.src = URL.createObjectURL(photoFile);
@@ -197,14 +214,12 @@ function updateLogin() {
 
 
 
-
 async function init() {
   const works = await getWorks();
   const categories = await getCategories();
   displayModalImg(works);
   displayListeDeroulante(categories);
   updateLogin();
-  //updateImgDisplay()
 };
 
 init();
