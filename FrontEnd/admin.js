@@ -15,168 +15,6 @@ const titreModal2 = document.querySelector(".titreModal2");
 const closeModal2 = document.querySelector(".modal2-close");
 
 
- ///////// AFFICHAGE DES MODALES /////////
-
-//AFFICHER-MASQUER LA MODALE 1 ET 2 //
-function afficherModal() {
-  modal.style.display = "block";
-};
-function masquerModal() {
-  modal.style.display = "none";
-};
-function masquerModal2(){
-  modal2.style.display="none";
-}
-btnModal.addEventListener("click", afficherModal);
-closeModal.addEventListener("click", masquerModal);
-closeModal2.addEventListener("click", masquerModal2);
-
-// MODALE 1 : afficher les projets //
-async function displayModalImg(works) {
-  const gallery2 = document.querySelector(".gallery2");
-  gallery2.innerHTML = "";
-  works.forEach((work) => {
-    const figureElement2 = document.createElement("figure");
-    const workImg = document.createElement("img");
-    workImg.src = work.imageUrl;
-    workImg.dataset.indexId = work.id;
-    const workP = document.createElement("p");
-    workP.innerText = "éditer";
-    const iconeDelet = document.createElement("div");
-    iconeDelet.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
-    iconeDelet.classList.add("iconeDelet");
-
-    /*Supprimer un element en cliquant sur l'icone corbeille//
-    
-    iconeDelet.addEventListener("click", async (event) => {
-      figureElement2.remove();  
-      const token = localStorage.getItem("token");
-      const figure = event.target.closest("figure");
-      
-      if (figure) {
-        const workId = figure.dataset.id;
-        console.log(figure);
-        console.log(workId);
-        console.log(token);
-    
-        fetch(`http://localhost:5678/api/works/${workId}`, {
-          method: 'DELETE',
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
-        })
-        .then(function(response) {
-          if (response.ok) {
-            return false;
-          } else {
-            console.error("Erreur lors de la suppression");
-          }
-        });
-      }
-    });*/
-
-
-    //// Supprimer toute la gallerie ( modale 1)////
-    suppImg.addEventListener("click", ()=>{
-      gallery2.innerHTML="";
-      gallery.innerHTML=""; //supp aussi la gallerie sur index.html//
-    });
-
-    const firstFigure = document.querySelector(".gallery2 figure:first-child");
-    if (firstFigure && !firstFigure.querySelector(".iconePosition")) {
-      const iconePosition = document.createElement("div");
-      iconePosition.innerHTML = '<i class="fa-solid fa-arrows-up-down-left-right"></i>';
-      iconePosition.classList.add("iconePosition");
-      firstFigure.appendChild(iconePosition);
-    }
-
-    gallery2.appendChild(figureElement2);
-    figureElement2.appendChild(workImg);
-    figureElement2.appendChild(workP);
-    figureElement2.appendChild(iconeDelet);
-  });
-};
-
-
-//Ajouter une image dans la modale et l'index//
-
-imageUpload.addEventListener("change", (event)=>{
-  const selectedFile = event.target.files[0];
-  window.selectedFile = selectedFile;
-  affichagePrevisuel(selectedFile);
-});
-
-function affichagePrevisuel(selectedFile){
-
-  const newImage = document.createElement("img");
-  newImage.src = URL.createObjectURL(selectedFile);
-  newImage.classList.add("modal2NewImg");
-  imgPrevisuel.appendChild(newImage);
-  boutonValider.style.backgroundColor="#1D6154";
-  boutonValider.style.color="white";
-}
-
-
-boutonValider.addEventListener("click", ()=>{
-  if (window.selectedFile){
-      const title = document.querySelector(".titreModal2").value;
-      if (title === ""){
-      const messageErreur = document.querySelector(".error-title");
-      messageErreur.style.display="block";
-      return;
-    }
-    addElementPhoto(window.selectedFile, title);
-    }
-  }
-);
-
-function addElementPhoto(photoFile, title){
-  const newElement = document.createElement("div");
-  const newImage = document.createElement("img");
-  newImage.src = URL.createObjectURL(photoFile);
-  const ajoutTitre = document.querySelector("figcaption");
-  ajoutTitre.textContent = title;
-  newElement.appendChild(newImage);
-  newElement.appendChild(ajoutTitre);
-  gallery.appendChild(newElement); 
-};
-
-
-
-    
- 
- 
-
-
-//AFFICHER LA MODALE 2 (bouton : Ajouter une photo)//
-ajoutImg.addEventListener("click", ()=>{
-  modal2.style.display="block";
-  modal.style.display="none";
-});
-//RETOUR A LA MODALE 1 (bouton : <- ) //
-precedent.addEventListener("click", ()=>{
-  afficherModal();
-  modal2.style.display="none";
-});
-
-
-
-// MODALE 2 : menu déroulant : (categories) //
-
- function displayListeDeroulante(categories){
-  const listeDeroulante = document.querySelector(".categoriesModal2");
-    //console.log(listeDeroulante);
-  categories.forEach((category)=>{
-    const options = document.createElement("option");
-    options.innerText = category.name;
-    //console.log(options)
-    listeDeroulante.appendChild(options);
-  
-  });
-};
-
-
-
 
 //MODE ADMINISTRATEUR : LogIn OK//
 function updateLogin() {
@@ -208,9 +46,204 @@ function updateLogin() {
 };
 
 
+ ///////// AFFICHAGE DES MODALES /////////
+
+//AFFICHER-MASQUER LA MODALE 1 ET 2 //
+function afficherModal() {
+  modal.style.display = "block";
+};
+function masquerModal() {
+  modal.style.display = "none";
+};
+function masquerModal2(){
+  modal2.style.display="none";
+}
+btnModal.addEventListener("click", afficherModal);
+closeModal.addEventListener("click", masquerModal);
+closeModal2.addEventListener("click", masquerModal2);
+
+// MODALE 1 : afficher les projets //
+async function displayModalImg(works) {
+  const gallery2 = document.querySelector(".gallery2");
+  gallery2.innerHTML = "";
+  works.forEach((work) => {
+    const figureElement2 = document.createElement("figure");
+    const workImg = document.createElement("img");
+    workImg.src = work.imageUrl;
+    workImg.dataset.indexId = work.id;
+    const workP = document.createElement("p");
+    workP.innerText = "éditer";
+    const iconeDelet = document.createElement("div");
+    iconeDelet.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
+    iconeDelet.classList.add("iconeDelet");
+
+    //Supprimer un element en cliquant sur l'icone corbeille//
+    
+    iconeDelet.addEventListener("click", async (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      try {
+        const works = await getWorks();
+        
+        figureElement2.remove(); 
+        displayWorks(works);
+    
+        for (const element of works) {
+          const id = element.id; 
+          await DeleteElementApi(id);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    });
+    
+    async function DeleteElementApi(id) {
+      const token = localStorage.getItem("token"); 
+    
+      const optionDelete = {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`, 
+        },
+      };
+      
+      try {
+        const response = await fetch(`http://localhost:5678/api/works/${id}`, optionDelete);
+        const resultat = await response.json();
+        
+        if (response.status === 200) {
+          return false;
+        } else {
+          ErreurMessage.textContent = "Erreur dans l’identifiant ou le mot de passe";
+        }
+      } catch (error) {
+        console.error("Erreur dans l’identifiant ou le mot de passe " + error.message);
+      }
+    }
+    
+    //// Supprimer toute la gallerie ( modale 1)////
+    suppImg.addEventListener("click", ()=>{
+      gallery2.innerHTML="";
+      gallery.innerHTML=""; //supp aussi la gallerie sur index.html//
+    });
+
+    const firstFigure = document.querySelector(".gallery2 figure:first-child");
+    if (firstFigure && !firstFigure.querySelector(".iconePosition")) {
+      const iconePosition = document.createElement("div");
+      iconePosition.innerHTML = '<i class="fa-solid fa-arrows-up-down-left-right"></i>';
+      iconePosition.classList.add("iconePosition");
+      firstFigure.appendChild(iconePosition);
+    }
+
+    gallery2.appendChild(figureElement2);
+    figureElement2.appendChild(workImg);
+    figureElement2.appendChild(workP);
+    figureElement2.appendChild(iconeDelet);
+  });
+};
+
+
+//Ajouter une image dans la modale et l'index//
+
+async function uploadImgApi() {
+  const token = localStorage.getItem("token");
+  const gallery = document.querySelector(".gallery");
+
+  const optionUpload = {
+    method: "POST",
+    headers: {
+      Accept: "application/json"
+    },
+    body: new FormData()
+  };
+
+  optionUpload.body.append("image", window.selectedFile);
+  optionUpload.body.append("title", document.querySelector(".titreModal2").value);
+
+  try {
+    const response = await fetch(`http://localhost:5678/api/works`, optionUpload);
+    const resultat = await response.json();
+    const title = document.querySelector(".titreModal2").value;
+    const boutonValider = document.querySelector("#boutonValider"); // Récupère le boutonValider
+    const gallery = document.querySelector("#gallery"); // Récupère l'élément gallery
+
+    if (response.status === 200) {
+      console.log("Image ajoutée");
+      boutonValider.style.backgroundColor = "#1D6154";
+      boutonValider.style.color = "white";
+      addElementPhoto(window.selectedFile, title, gallery); // Appel modifié avec les arguments requis
+    } else if (response.status === 400 && title === "") {
+      const messageErreur = document.querySelector(".error-title");
+      messageErreur.style.display = "block";
+      return;
+    } else if (response.status === 401) {
+      const messageErreur2 = document.querySelector(".error-log");
+      messageErreur2.style.display = "block";
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+imageUpload.addEventListener("change", (event) => {
+  event.preventDefault();
+  const selectedFile = event.target.files[0];
+  window.selectedFile = selectedFile;
+});
+
+boutonValider.addEventListener("click", () => {
+  if (window.selectedFile) {
+    const title = document.querySelector(".titreModal2").value;
+    if (title === "") {
+      const messageErreur = document.querySelector(".error-title");
+      messageErreur.style.display = "block";
+      return;
+    }
+    addElementPhoto(window.selectedFile, title, gallery); // Appel modifié avec les arguments requis
+  }
+});
+
+function addElementPhoto(photoFile, title, gallery) {
+  const newFigure = document.createElement("figure"); // Crée un nouvel élément <figure>
+  const newImage = document.createElement("img");
+  newImage.src = URL.createObjectURL(photoFile);
+  const ajoutTitre = document.createElement("figcaption");
+  ajoutTitre.textContent = title;
+  newFigure.appendChild(newImage);
+  newFigure.appendChild(ajoutTitre);
+  gallery.appendChild(newFigure);
+}
 
 
 
+
+
+//AFFICHER LA MODALE 2 (bouton : Ajouter une photo)//
+ajoutImg.addEventListener("click", ()=>{
+  modal2.style.display="block";
+  modal.style.display="none";
+});
+//RETOUR A LA MODALE 1 (bouton : <- ) //
+precedent.addEventListener("click", ()=>{
+  afficherModal();
+  modal2.style.display="none";
+});
+
+
+
+// MODALE 2 : menu déroulant : (categories) //
+
+ function displayListeDeroulante(categories){
+  const listeDeroulante = document.querySelector(".categoriesModal2");
+    //console.log(listeDeroulante);
+  categories.forEach((category)=>{
+    const options = document.createElement("option");
+    options.innerText = category.name;
+    //console.log(options)
+    listeDeroulante.appendChild(options);
+  
+  });
+};
 
 
 

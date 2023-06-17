@@ -4,6 +4,7 @@ async function displayWorks(works){
   gallery.innerHTML="";
   works.forEach((work) => {
     const figureElement = document.createElement("figure");
+    figureElement.setAttribute('id', work.id);
     const workImg = document.createElement("img");
     workImg.src = work.imageUrl;
     const workId = document.createElement("figcaption");
