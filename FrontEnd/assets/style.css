@@ -261,8 +261,8 @@ width: 100%;
 }
 
 .filterActive{
-	color:white;
-	background: #1D6154;
+	color:white  !important;
+	background: #1D6154; 
 	
 }
 
