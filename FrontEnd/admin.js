@@ -5,11 +5,12 @@ const suppImg = document.querySelector(".modal-supp");
 const btnModal = document.querySelector(".modal-btn");
 const modal2 = document.querySelector(".modal2-container");
 const precedent = document.querySelector("#precedent");
-const imageUpload = document.querySelector("#image_uploads");
+const imageUpload = document.querySelector(".btn-ajout-photo");
 const imgPrevisuel = document.querySelector("#icone_previsuel");
-const btnAjoutImgModal2 = document.querySelector(".btn-ajout-photo");
+const btnAjoutImgModal2 = document.getElementById("#image_uploads");
 const gallery = document.querySelector(".gallery");
 const boutonValider = document.querySelector(".modal2-valider");
+const gallery2 = document.querySelector(".gallery2");
 const titreModal2 = document.querySelector(".titreModal2");
 const closeModal2 = document.querySelector(".modal2-close");
 
@@ -167,52 +168,66 @@ async function displayModalImg(works) {
 //Ajouter une image dans la modale et l'index//
 
 
+async function addWorks() {
+  const token = window.localStorage.getItem("token");
+  console.log(token);
 
-function addElementPhoto(photoFile, title, gallery) {
-  const newFigure = document.createElement("figure"); // Création d'une nouvelle balise <figure>
+  const imageUrl = window.selectedFile;
+  const title = document.querySelector(".titreModal2").value;
+  const categoryId = document.querySelector(".categoriesModal2").value;
+
+  const formData = new FormData();
+  formData.append("image", imageUrl);
+  formData.append("titre", title);
+  formData.append("categorie", categoryId);
+  //console.log(formData)
+
+  try {
+    const response = await fetch(`http://localhost:5678/api/works`,
+     {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: 'application/json',
+        "Content-type":'multipart/form-data',
+      },
+      body: formData,
+    });
+
+    if (response.status === 200) {
+      console.log("Image ajoutée");
+      addElementPhoto();
+      boutonValider.style.backgroundColor = "#1D6154";
+      boutonValider.style.color = "white"
+    } else if (response.status === 400) {
+      const messageErreur = document.querySelector(".error-title");
+      messageErreur.style.display = "block";
+    } else if (response.status === 401) {
+      const messageErreur2 = document.querySelector(".error-log");
+      messageErreur2.style.display = "block";
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+function addElementPhoto() {
+  const newFigure = document.createElement("figure");
   const newImage = document.createElement("img");
-  newImage.src = URL.createObjectURL(photoFile);
+  newImage.src = URL.createObjectURL(window.selectedFile);
   const ajoutTitre = document.createElement("figcaption");
   ajoutTitre.textContent = title;
   newFigure.appendChild(newImage);
   newFigure.appendChild(ajoutTitre);
   gallery.appendChild(newFigure);
+  gallery2.appendChild(newFigure);
 }
 
-function addWorks(){
-  const token = window.localStorage.getItem("token");
-  console.log(token);
-
-  fetch (`http://localhost:5678/api/works`,{
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${token}`,
-      Accept: 'multipart/form-data',
-    },
-  })
-  .then((response)=>{
-    if (response.status === 200){
-      console.log("Image ajoutée");
-      addElementPhoto(window.selectedFile, title);
-      boutonValider.style.backgroundColor = "#1D6154";
-      boutonValider.style.color ="white";
-    } else if (response.status === 401){
-      const messageErreur = document.querySelector(".error-title");
-      messageErreur.style.display = "block";
-    } else if ( response.status === 401){
-      const messageErreur2 = document.querySelector(".error-log");
-      messageErreur2.style.display="block";
-    }
-  })
-.catch((error) =>{
-  console.log(error);
-})
-};
 
 imageUpload.addEventListener("change", (event) => {
   event.preventDefault();
-  const selectedFile = event.target.files[0]; //extrait le fichier
-  window.selectedFile = selectedFile; //stocke le fichier
+  const selectedFile = event.target.files[0];
+  window.selectedFile = selectedFile;
 });
 
 boutonValider.addEventListener("click", () => {
@@ -225,7 +240,7 @@ boutonValider.addEventListener("click", () => {
     }
     addElementPhoto(window.selectedFile, title, gallery);
   }
-  addWorks()
+  addWorks();
 });
 
 
