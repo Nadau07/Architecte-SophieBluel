@@ -169,7 +169,7 @@ console.log(boutonValider);
 function validationColor(event) {
   event.preventDefault();
   if (imageInput.files.length > 0 && titleInput.value.trim() !== "") {
-    boutonValider.style.background = "green";
+    boutonValider.style.background = "#1D6154";
     boutonValider.style.color = "white";
     errorTitre.style.display = "none";
   } else {
@@ -183,13 +183,15 @@ imageInput.addEventListener('change', validationColor);
 imageInput.addEventListener('change', function() {
   const iconePrevisuel = document.getElementById("icone_previsuel");
   const imgPrevisuel = document.getElementById("imagePreview");
+  const btnPrevisuel = document.querySelector(".btn-ajout-photo");
   const file = imageInput.files[0];
   if (file) {
     const reader = new FileReader();
     reader.onload = function(event) {
       iconePrevisuel.style.display="none";
       imgPrevisuel.src = event.target.result;
-      imgPrevisuel.style.display = "block";
+      imgPrevisuel.style.display = "flex";
+      btnPrevisuel.style.display= "none";
     };
     reader.readAsDataURL(file);
   } else {
@@ -241,10 +243,6 @@ async function sendFormData(formData, token) {
   .catch(error => {
     console.log(error);
   });
-  const works = await getWorks();
-        const categories = await getCategories();
-        displayModalImg(works);
-        displayWorks(works);
 }
 
 
