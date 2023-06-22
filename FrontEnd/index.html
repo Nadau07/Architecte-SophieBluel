@@ -37,31 +37,32 @@
 	<!--Modale 2 --->
 
 	<div class="modal2-container">
-		<div class="modal2-body">
+		<form id="modalForm"> 
+		  <div class="modal2-body">
 			<i id="precedent" class="fa-solid fa-arrow-left"></i>
 			<span class="modal2-close"><i class="fa-solid fa-xmark"></i></span>
 			<h2 class="modal2-title">Ajout photo</h2>
 			<div class="modal2-ajout-photo">
-				<i id="icone_previsuel" class="fa-sharp fa-regular fa-image"></i>
-				<img id="imagePreview" class="modal2NewImg" src="#" alt="Preview">
-				<label for="image_uploads" class="btn-ajout-photo"> + Ajouter une photo</label>
-				<input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .png" multiple>
-				<p>jpg, png: 4mo max</p>
+			  <i id="icone_previsuel" class="fa-sharp fa-regular fa-image"></i>
+			  <img id="imagePreview" class="modal2NewImg" src="#" alt="Preview">
+			  <label for="image_uploads" class="btn-ajout-photo"> + Ajouter une photo</label>
+			  <input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .png" multiple>
+			  <p>jpg, png: 4mo max</p>
 			</div>
 			<div class="modal2-titreEtCategorie">
-			<label for="titre" class="titre">Titre</label>
-						<input type="text" class="titreModal2" name="title">
-			<label for="categories" class="categories">Catégories</label>			
-			<select name="liste-deroulante" class="categoriesModal2">
-			</select>
-			<p class="error-title">Erreur: Veuillez saisir un titre (obligatoire)</p>
-			<p class="error-log">Accès non autorisée, veuillez vous connecter</p>
-		
+			  <label for="titre" class="titre">Titre</label>
+			  <input type="text" class="titreModal2" name="title">
+			  <label for="categories" class="categories">Catégories</label>			
+			  <select name="liste-deroulante" class="categoriesModal2">
+			  </select>
+			  <p class="error-title">Erreur: Veuillez saisir un titre (obligatoire)</p>
+			  <p class="error-log">Accès non autorisée, veuillez vous connecter</p>
 			</div>
-			<button class="modal2-valider" id="boutonValider">Valider</button>
-			
-		</div>
-	</div>
+			<button type="submit" class="modal2-valider" id="boutonValider">Valider</button> 
+		  </div>
+		</form>
+	  </div>
+	  
 	
 <header>
 	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
