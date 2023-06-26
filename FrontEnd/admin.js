@@ -69,12 +69,14 @@ precedent.addEventListener("click", () => {
 // MODALE 2 : menu déroulant : (categories) //
 
 function displayListeDeroulante(categories) {
+  console.log(categories)
   const listeDeroulante = document.querySelector(".categoriesModal2");
   //console.log(listeDeroulante);
   categories.forEach((category) => {
     const options = document.createElement("option");
     options.innerText = category.name;
-    //console.log(options)
+    options.value = category.id ;
+    console.log(options)
     listeDeroulante.appendChild(options);
   });
 }
@@ -137,7 +139,7 @@ async function displayModalImg(works) {
     suppImg.addEventListener("click", (event) => {
       event.preventDefault();
       gallery2.innerHTML = "";
-      gallery.innerHTML = ""; //supp aussi la gallerie sur index.html//
+      gallery.innerHTML = ""; //supp aussi la galerie sur index.html//
     });
     const firstFigure = document.querySelector(".gallery2 figure:first-child");
     if (firstFigure && !firstFigure.querySelector(".iconePosition")) {
@@ -184,8 +186,8 @@ imageInput.addEventListener('change', function() {
   const iconePrevisuel = document.getElementById("icone_previsuel");
   const imgPrevisuel = document.getElementById("imagePreview");
   const btnPrevisuel = document.querySelector(".btn-ajout-photo");
-  const file = imageInput.files[0];
-  if (file) {
+  const file = imageInput.files[0]; //recupere l'image selectionnée
+  if (file) {//verifie si une image est selectionnée
     const reader = new FileReader();
     reader.onload = function(event) {
       iconePrevisuel.style.display="none";
@@ -193,56 +195,64 @@ imageInput.addEventListener('change', function() {
       imgPrevisuel.style.display = "flex";
       btnPrevisuel.style.display= "none";
     };
-    reader.readAsDataURL(file);
+    reader.readAsDataURL(file); //lecture du contenu de l'image en URL
   } else {
     imgPrevisuel.src = "#";
     imgPrevisuel.style.display = "none";
   }
 });
+
 titleInput.addEventListener('input', validationColor);
 const form = document.getElementById("modalForm");
 
 form.addEventListener("submit", event => {
+  event.preventDefault();
   const token = localStorage.getItem("token");
   const image = imageInput.files[0];
   const title = titleInput.value.trim();
   const categoryId = categoryInput.value;
 
+  console.log("image:", image);
+  console.log("titre:",title);
+  console.log("categories:", categoryId);
+
   const formData = new FormData();
-  formData.append("id", 0);
+  formData.append("image", image);
   formData.append("title", title);
-  formData.append("categoryId", categoryId);
-  formData.append("userId", 0);
+  formData.append("category", categoryId);
+  
 
-  if (image) {
-    const reader = new FileReader();
-    reader.onload = function() {
-      formData.append("image", reader.result);
-      sendFormData(formData, token);
-    };
-    reader.readAsDataURL(image);
-  } else {
-    sendFormData(formData, token);
+  if (image && title && categoryId) {
+   sendFormData(formData, token);
   }
-
-  event.preventDefault();
+  
 });
-
-async function sendFormData(formData, token) {
+ async function sendFormData(formData, token) {
+ 
   fetch("http://localhost:5678/api/works", {
     method: "POST",
     headers: {
-      "Authorization": `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
+      Accept:"application/json",
     },
     body : formData,
   })
-  .then(response => response.json())
-  .then(data => {
-    console.log(data);
+  .then((response) => {
+    if (response.ok) {
+      console.log("Ajout réussi");
+    } else if (response.status === 401) {
+      console.log("Non autorisé");
+    }
   })
-  .catch(error => {
-    console.log(error);
+  .catch((error) => {
+    console.log(
+      "Une erreur s'est produite lors de la suppression :",
+      error
+    );
   });
+  const works = await getWorks();
+  const categories = await getCategories();
+  displayModalImg(works);
 }
 
 
