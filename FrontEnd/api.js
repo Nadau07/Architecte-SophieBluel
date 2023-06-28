@@ -1,3 +1,5 @@
+//ENSEMBLE des fonctions asynchrones pour effectuer des requêtes vers l'API//
+
 const baseUrl = "http://localhost:5678/api";
 
 async function getWorks() {

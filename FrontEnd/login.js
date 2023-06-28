@@ -1,10 +1,8 @@
-/* Compte de test Sophie Bluel:
+/* Compte de Sophie Bluel:
 
 email: sophie.bluel@test.tld
 password: S0phie 
-'http://localhost:5678/api/users/login'
 
-Message erreur a afficher " Erreur dans l’identifiant ou le mot de passe "
 */
 
 const formulaire = document.getElementById("form-login");
