@@ -14,7 +14,7 @@ async function getCategories() {
   return data2;
 }
 
-async function Login() {
+async function login() {
   const response = await fetch("http://localhost:5678/api/users/login");
   const resultat = await response.json();
   const token = resultat.token;
@@ -22,9 +22,3 @@ async function Login() {
   console.log(resultat);
   return resultat;
 }
-
-/* Autre possibilité de recuperer via l'API
-    fetch('http://localhost:5678/api/categories')
-    .then(res => res.json())
-    .then(res2 => console.log(res2))
-*/

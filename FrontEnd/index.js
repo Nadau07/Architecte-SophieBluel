@@ -57,7 +57,6 @@ async function displayCategories(categories) {
 async function init() {
   const works = await getWorks();
   const categories = await getCategories();
-
   displayWorks(works);
   await displayCategories(categories);
 }
