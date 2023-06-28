@@ -16,11 +16,4 @@ async function getCategories() {
   return data2;
 }
 
-async function login() {
-  const response = await fetch("http://localhost:5678/api/users/login");
-  const resultat = await response.json();
-  const token = resultat.token;
-  localStorage.setItem("token", token);
-  console.log(resultat);
-  return resultat;
-}
+
